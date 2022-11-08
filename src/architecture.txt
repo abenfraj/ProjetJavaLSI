@@ -1,0 +1,31 @@
+Ce fichier a été crée pour y ajouter/modifier/débattre de l'implémentation qu'on va devoir réaliser pour ce projet.
+Si vous voulez le modifier depuis votre branche, faites un pull request sur le main pour que tout le monde puisse le voir.
+
+
+I. Héritage / Polymorphisme
+
+        a. La classe "Formes géométriques" doit être une interface ou une classe abstraite implémentée par toutes les formes géométriques possibles.
+        Ses méthodes ressembleraient à ça : getPerimetre(), getSurface(), setPerimetre()...
+
+        b. Il faut une classe "Transformation" qui serait extends/implémentée par toutes les transformations possibles. Elle aurait en attribut priver une forme géométriques.$
+
+        c. Image a besoin de plusieurs formes, un dessin a besoin de plusieurs images.
+
+        d. On doit trier les formes d'une image par ordre croissant de leur périmètre, et par ordre croissant de leur aire pour les images dans un dessin.
+
+
+II. Divers
+
+        a. Pour s'assurer de l'absence de doublons, on utilisera un TreeSet.
+
+        b. Pensez à mettre des commentaires
+
+        c. On considèrera que les formes du même type sont des doublons
+            ex : une image avec deux cercles de deux diamètres différents => MAUVAISE IMAGE
+                 une image avec une et uniquement une seule fois un type de forme => IMAGE VALIDE
+
+        d. Créez une branche, mergez la sur le main lorsque ce que vous codez est fonctionnel
+
+        e.
+
+
