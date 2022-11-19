@@ -1,11 +1,13 @@
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Image {
-    private ArrayList<GeometricShape> shapes;
+    private TreeSet<GeometricShape> shapes;
     private int perimeter;
     private int surface;
 
-    public Image(ArrayList<GeometricShape> shapes) {
+    public Image(TreeSet<GeometricShape> shapes) {
         this.shapes = shapes;
         this.setPerimeter();
         this.setSurface();

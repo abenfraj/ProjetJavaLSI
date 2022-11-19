@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Polygon extends GeometricShape {
     private ArrayList<Line> lines;
@@ -33,4 +35,12 @@ public class Polygon extends GeometricShape {
         }
         this.setSurface(surface);
     }
+
+    public boolean isPolygon() {
+        if(this.lines.get(0).getX() == this.lines.get(this.lines.size()-1).getY()) {
+            return true;
+        }
+        return false;
+    }
+
 }
