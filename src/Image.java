@@ -1,8 +1,9 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class Image {
+public class Image implements Comparable<Image>{
     private TreeSet<GeometricShape> shapes;
     private int perimeter;
     private int surface;
@@ -35,5 +36,22 @@ public class Image {
             surface += shape.getSurface();
         }
         this.surface = surface;
+    }
+
+    @Override
+    public int compareTo(Image o) {
+        if(this.getSurface() > o.getSurface()) {
+            return 1;
+        } else if(this.getSurface() < o.getSurface()) {
+            return -1;
+        } else {
+            return 0;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Image{" +
+                "shapes=" + shapes;
     }
 }

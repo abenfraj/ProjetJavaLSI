@@ -11,6 +11,10 @@ public class Drawing {
         this.setSurface();
     }
 
+    public TreeSet<Image> getImages() {
+        return this.images;
+    }
+
     public int setPerimeter() {
         int perimeter = 0;
         for (Image image : images) {
@@ -27,5 +31,21 @@ public class Drawing {
         }
         this.surface = surface;
         return surface;
+    }
+
+    public Drawing copy() {
+        TreeSet<Image> imagesCopyOfDrawing = new TreeSet<>();
+        Drawing copyOfDrawing = new Drawing(imagesCopyOfDrawing);
+        for (Image image : this.getImages()) {
+            imagesCopyOfDrawing.add(image);
+        }
+        return copyOfDrawing;
+    }
+
+    @Override
+    public String toString() {
+        return "Drawing{" +
+                "images=" + images +
+                '}';
     }
 }

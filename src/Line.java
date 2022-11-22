@@ -4,7 +4,8 @@ public class Line extends GeometricShape {
     private int y;
 
     public Line(int length, int x, int y) {
-        super(length, 0);
+        super();
+        this.length = length;
         this.x = x;
         this.y = y;
     }

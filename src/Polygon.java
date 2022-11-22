@@ -30,10 +30,6 @@ public class Polygon extends GeometricShape {
 
     public void setSurface() {
         int surface = 0;
-        for (Line line : lines) {
-            surface += line.getLength();
-        }
-        this.setSurface(surface);
     }
 
     public boolean isPolygon() {
