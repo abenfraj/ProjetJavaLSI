@@ -1,3 +1,7 @@
+package model.shapes;
+
+import model.shapes.GeometricShape;
+
 public class Line extends GeometricShape {
     private int length;
     private int xi;

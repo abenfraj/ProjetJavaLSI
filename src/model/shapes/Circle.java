@@ -1,3 +1,5 @@
+package model.shapes;
+
 public class Circle extends GeometricShape {
     private int radius;
 

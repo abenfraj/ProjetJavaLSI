@@ -1,3 +1,5 @@
+package model.shapes;
+
 public class Ellipsis extends GeometricShape {
     private int radius1;
     private int radius2;

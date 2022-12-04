@@ -1,5 +1,9 @@
-public class EllipsisTransformation implements Transformation{
-    private Ellipsis ellipsis;
+package model.transformations;
+
+import model.shapes.Circle;
+
+public class CircleTransformation implements Transformation {
+    private Circle circle;
 
     @Override
     public void translation(int value) {
@@ -8,8 +12,7 @@ public class EllipsisTransformation implements Transformation{
     @Override
     public void dilation(int factor) {
         if (factor > 0) {
-            this.ellipsis.setRadius1(this.ellipsis.getRadius1() * factor);
-            this.ellipsis.setRadius2(this.ellipsis.getRadius2() * factor);
+            this.circle.setRadius(this.circle.getRadius() * factor);
         }
     }
 

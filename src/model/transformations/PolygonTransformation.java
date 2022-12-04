@@ -1,3 +1,8 @@
+package model.transformations;
+
+import model.shapes.Line;
+import model.shapes.Polygon;
+
 public class PolygonTransformation implements Transformation {
 
     private Polygon polygon;

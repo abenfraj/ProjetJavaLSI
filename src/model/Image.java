@@ -1,6 +1,7 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Set;
+package model;
+
+import model.shapes.GeometricShape;
+
 import java.util.TreeSet;
 
 public class Image implements Comparable<Image>{
@@ -51,7 +52,7 @@ public class Image implements Comparable<Image>{
 
     @Override
     public String toString() {
-        return "Image{" +
+        return "model.Image{" +
                 "shapes=" + shapes;
     }
 }

@@ -1,3 +1,5 @@
+package model.shapes;
+
 public abstract class GeometricShape implements Comparable<GeometricShape> {
     private int perimeter;
     private int surface;
@@ -40,6 +42,6 @@ public abstract class GeometricShape implements Comparable<GeometricShape> {
 
     @Override
     public String toString() {
-        return "GeometricShape [perimeter=" + perimeter + ", surface=" + surface + "]";
+        return "model.shapes.GeometricShape [perimeter=" + perimeter + ", surface=" + surface + "]";
     }
 }

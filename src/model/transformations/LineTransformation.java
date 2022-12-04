@@ -1,4 +1,8 @@
-public class LineTransformation implements Transformation{
+package model.transformations;
+
+import model.shapes.Line;
+
+public class LineTransformation implements Transformation {
     private Line line;
 
     @Override

@@ -1,3 +1,5 @@
+package model.transformations;
+
 public interface Transformation {
 
     public void translation(int value);

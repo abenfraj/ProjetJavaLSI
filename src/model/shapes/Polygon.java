@@ -1,3 +1,8 @@
+package model.shapes;
+
+import model.shapes.GeometricShape;
+import model.shapes.Line;
+
 import java.util.ArrayList;
 
 public class Polygon extends GeometricShape {

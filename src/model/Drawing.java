@@ -1,3 +1,5 @@
+package model;
+
 import java.util.TreeSet;
 
 public class Drawing {
@@ -44,7 +46,7 @@ public class Drawing {
 
     @Override
     public String toString() {
-        return "Drawing{" +
+        return "model.Drawing{" +
                 "images=" + images +
                 '}';
     }
