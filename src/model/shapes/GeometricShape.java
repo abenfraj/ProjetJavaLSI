@@ -42,6 +42,6 @@ public abstract class GeometricShape implements Comparable<GeometricShape> {
 
     @Override
     public String toString() {
-        return "model.shapes.GeometricShape [perimeter=" + perimeter + ", surface=" + surface + "]";
+        return "GeometricShape [perimeter=" + perimeter + ", surface=" + surface + "]";
     }
 }

@@ -28,4 +28,12 @@ public class Ellipsis extends GeometricShape {
     public void setRadius2(int radius2) {
         this.radius2 = radius2;
     }
+
+    @Override
+    public String toString() {
+        return "Ellipsis{" +
+                "radius1=" + radius1 +
+                ", radius2=" + radius2 +
+                '}';
+    }
 }

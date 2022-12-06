@@ -46,7 +46,7 @@ public class Drawing {
 
     @Override
     public String toString() {
-        return "model.Drawing{" +
+        return "Drawing{" +
                 "images=" + images +
                 '}';
     }

@@ -57,5 +57,16 @@ public class Line extends GeometricShape {
     public void setYj(int yj) {
         this.yj = yj;
     }
+
+    @Override
+    public String toString() {
+        return "Line{" +
+                "length=" + length +
+                ", xi=" + xi +
+                ", yi=" + yi +
+                ", xj=" + xj +
+                ", yj=" + yj +
+                '}';
+    }
 }
 
