@@ -9,13 +9,11 @@ import java.util.ArrayList;
 public class Polygon extends GeometricShape {
     private ArrayList<Line> lines;
 
-    public Polygon(ArrayList<Line> lines) throws PolygonExcetpion {
+    public Polygon(ArrayList<Line> lines){
         super(0, 0);
         this.lines = lines;
         this.setPerimeter();
         this.setSurface();
-
-        isPolygon();
 
     }
 
@@ -57,11 +55,14 @@ public class Polygon extends GeometricShape {
         this.setSurface(surface);
     }
 
-    public void isPolygon() throws PolygonExcetpion{
+    public boolean isPolygon() {
         if (this.lines.get(0).getXi() == this.lines.get(this.lines.size() - 1).getXj()
                 && this.lines.get(0).getYi() == this.lines.get(this.lines.size() - 1).getYj()) {
+            return true;
         }
+        return false;
     }
+
 
 
 
