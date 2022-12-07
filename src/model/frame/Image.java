@@ -1,4 +1,4 @@
-package model;
+package model.frame;
 
 import model.shapes.GeometricShape;
 
@@ -52,7 +52,7 @@ public class Image implements Comparable<Image>{
 
     @Override
     public String toString() {
-        return "model.Image{" +
+        return "model.frame.Image{" +
                 "shapes=" + shapes;
     }
 }

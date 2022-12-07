@@ -42,9 +42,6 @@ public class Polygon extends GeometricShape {
             points[i][0] = this.getLines().get(i).getXi();
             points[i][1] = this.getLines().get(i).getYi();
         }
-        for(int i = 0; i < nbOfLines; i++) {
-            System.out.println(points[i][0] + " " + points[i][1]);
-        }
         for(int i = 0; i < nbOfLines - 1; ++i) {
             xi = points[i][0];
             yi = points[i][1];
