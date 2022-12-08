@@ -14,7 +14,11 @@ public class Drawing {
     }
 
     public TreeSet<Image> getImages() {
-        return this.images;
+        return images;
+    }
+
+    public void setImages(TreeSet<Image> images) {
+        this.images = images;
     }
 
     public int setPerimeter() {

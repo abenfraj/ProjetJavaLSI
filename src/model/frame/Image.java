@@ -15,6 +15,14 @@ public class Image implements Comparable<Image>{
         this.setSurface();
     }
 
+    public TreeSet<GeometricShape> getShapes() {
+        return shapes;
+    }
+
+    public void setShapes(TreeSet<GeometricShape> shapes) {
+        this.shapes = shapes;
+    }
+
     public int getPerimeter() {
         return perimeter;
     }

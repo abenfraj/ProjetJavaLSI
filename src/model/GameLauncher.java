@@ -1,7 +1,10 @@
 package model;
 
+import model.frame.Drawing;
 import model.frame.Image;
 import model.shapes.*;
+import model.transformations.DrawingTransformation;
+import model.transformations.ImageTransformation;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,11 +13,19 @@ import java.util.TreeSet;
 public class GameLauncher {
 
     private Scanner userInput = new Scanner(System.in);
+
     private Ellipsis ellipsis = null;
     private Circle circle = null;
     private Polygon polygon = null;
+
     private TreeSet<GeometricShape> shapes = new TreeSet<>();
-    private Image image;
+    private Image image = new Image(this.shapes);
+
+    private TreeSet<Image> images = new TreeSet<>();
+    private Drawing drawing = new Drawing(this.images);
+
+    private ImageTransformation imageTransformation = new ImageTransformation(this.shapes);
+    private DrawingTransformation drawingTransformation = new DrawingTransformation(this.images);
 
     public void welcome() {
 
@@ -39,7 +50,7 @@ public class GameLauncher {
                 drawEllipsis();
                 break;
             case 3:
-                drawPolygon();
+                drawPolygonMenu();
                 break;
             case 4:
                 imageTab();
@@ -56,104 +67,8 @@ public class GameLauncher {
         }
     }
 
-    private void drawingTab() {
-    }
-
-    private void imageTab() {
-        int choice = 0;
-        System.out.println();
-        System.out.println("Here is the image tab, please select an option : ");
-        System.out.println("1. Display image");
-        System.out.println("2. Apply translation");
-        System.out.println("3. Apply dilation");
-        System.out.println("4. Apply rotation");
-        System.out.println("5. Apply symmetryX");
-        System.out.println("6. Apply symmetryY");
-        System.out.println("7. Delete content of the image");
-        System.out.println("8. Back to Welcome menu");
-        choice = this.userInput.nextInt();
-
-        switch (choice) {
-            case 1:
-                displayImage();
-                break;
-            case 2:
-                applyTranslation();
-                break;
-            case 3:
-                applyDilation();
-                break;
-            case 4:
-                applyRotation();
-                break;
-            case 5:
-                applySymetryX();
-                break;
-            case 6:
-                applySymetryY();
-                break;
-            case 7:
-                deleteContentOfImage();
-                break;
-            case 8:
-                System.out.println("Back to Welcome menu.......");
-                welcome();
-                break;
-            default:
-                imageTab();
-                break;
-        }
-
-
-    }
-
-    private void deleteContentOfImage() {
-        System.out.println("Removing all shapes in the image............DONE");
-        for (GeometricShape shape : this.shapes) {
-            this.shapes.remove(shape);
-        }
-        System.out.println("Back to Welcome menu.....");
-        welcome();
-    }
-
-    private void applySymetryY() {
-    }
-
-    private void applySymetryX() {
-    }
-
-    private void applyRotation() {
-    }
-
-    private void applyDilation() {
-    }
-
-    private void applyTranslation() {
-    }
-
-    private void displayDrawing() {
-    }
-
-    private void displayImage() {
-        if(this.shapes.isEmpty()) {
-            System.out.println("The image is empty, please add shapes in it.");
-            System.out.println("Back to Welcome menu....");
-            welcome();
-            return;
-        }
-        this.image = new Image(this.shapes);
-        int imagePerimeter = 0;
-        int imageSurface = 0;
-        System.out.println("Your image has " + shapes.stream().count() + " shape(s) in it");
-        for (GeometricShape shape : this.shapes) {
-            imagePerimeter = shape.getPerimeter();
-            imageSurface = shape.getSurface();
-        }
-        System.out.println("The perimeter of your image is equal to " + imagePerimeter + ", and the surface is equal to " + imageSurface);
-        imageTab();
-    }
-
-    private void drawPolygon() {
+    //Section used to draw different shapes
+    private void drawPolygonMenu() {
         int choice = 0;
 
         System.out.println();
@@ -185,7 +100,7 @@ public class GameLauncher {
                 welcome();
                 break;
             default:
-                drawPolygon();
+                drawPolygonMenu();
                 break;
         }
 
@@ -353,4 +268,280 @@ public class GameLauncher {
         welcome();
     }
 
+    //Section used to manage the images
+    private void imageTab() {
+        int choice = 0;
+
+        if(!this.shapes.isEmpty()) {
+            this.images.add(this.image);
+        }
+
+        System.out.println();
+        System.out.println("Here is the image tab, please select an option : ");
+        System.out.println("1. Display image");
+        System.out.println("2. Apply translation");
+        System.out.println("3. Apply dilation");
+        System.out.println("4. Apply rotation");
+        System.out.println("5. Apply symmetryX");
+        System.out.println("6. Apply symmetryY");
+        System.out.println("7. Delete content of the image");
+        System.out.println("8. Back to Welcome menu");
+        choice = this.userInput.nextInt();
+
+        switch (choice) {
+            case 1:
+                displayImage();
+                break;
+            case 2:
+                applyTranslationOnImage();
+                break;
+            case 3:
+                applyDilationOnImage();
+                break;
+            case 4:
+                applyRotationOnImage();
+                break;
+            case 5:
+                applySymetryXOnImage();
+                break;
+            case 6:
+                applySymetryYOnImage();
+                break;
+            case 7:
+                deleteContentOfImage();
+                break;
+            case 8:
+                System.out.println("Back to Welcome menu.......");
+                welcome();
+                break;
+            default:
+                imageTab();
+                break;
+        }
+    }
+
+    private void displayImage() {
+        int count = 0;
+
+        if(this.shapes.isEmpty()) {
+            System.out.println("The image is empty, please add shapes in it.");
+            System.out.println("Back to Welcome menu....");
+            welcome();
+            return;
+        }
+
+        int imagePerimeter = 0;
+        int imageSurface = 0;
+        System.out.println("Your image has " + shapes.stream().count() + " shape(s) in it");
+        for (GeometricShape shape : this.shapes) {
+            if(shape instanceof Polygon) {
+                for (Line line : ((Polygon) shape).getLines()) {
+                    count++;
+                    System.out.println("Coordinates of line " + count);
+                    System.out.print("Xi" + count + " : " + line.getXi() + "; ");
+                    System.out.print("Yi" + count + " : " + line.getYi() + "; ");
+                    System.out.print("Xj" + count + " : " + line.getXj() + "; ");
+                    System.out.print("Yj" + count + " : " + line.getYj() + "; ");
+                    System.out.println();
+                }
+            }
+            if(shape instanceof Circle) {
+                System.out.println("Radius of the circle : " + ((Circle) shape).getRadius());
+            }
+            if(shape instanceof Ellipsis) {
+                System.out.println("First Radius of the ellipsis : " + ((Ellipsis) shape).getRadius1());
+                System.out.println("Second Radius of the ellipsis : " + ((Ellipsis) shape).getRadius2());
+            }
+            imagePerimeter += shape.getPerimeter();
+            imageSurface += shape.getSurface();
+        }
+        System.out.println("The perimeter of your image is equal to " + imagePerimeter + ", and it surface is equal to " + imageSurface);
+        imageTab();
+    }
+
+    private void deleteContentOfImage() {
+        System.out.println("Removing all shapes in the image............DONE");
+        this.shapes.removeAll(shapes);
+
+
+        System.out.println("Back to Welcome menu.....");
+        welcome();
+    }
+
+    private void applySymetryYOnImage() {
+        this.imageTransformation.symmetryY();
+        System.out.println("Applying the rotation using the vertical axis of the geometric shapes................DONE");
+        System.out.println("The coordinates of the shapes has been successfully changed. To check the new values, display the image.");
+        imageTab();
+    }
+
+    private void applySymetryXOnImage() {
+        this.imageTransformation.symmetryX();
+        System.out.println("Applying the rotation using the horizontal axis of the geometric shapes................DONE");
+        System.out.println("The coordinates of the shapes has been successfully changed. To check the new values, display the image.");
+        imageTab();
+    }
+
+    private void applyRotationOnImage() {
+        this.imageTransformation.rotation();
+        System.out.println("Applying the rotation to the geometric shapes................DONE");
+        System.out.println("The coordinates of the shapes has been successfully changed. To check the new values, display the image.");
+        imageTab();
+    }
+
+    private void applyDilationOnImage() {
+        System.out.print("Please enter the value you want to apply to all the geometric shapes for the dilation : ");
+        int imageDilationValue = this.userInput.nextInt();
+        while(imageDilationValue < 0) {
+            System.out.print("Please enter a positive value : ");
+            imageDilationValue = this.userInput.nextInt();
+        }
+        System.out.println("Dilation of " + imageDilationValue + " .........DONE");
+        System.out.println("The coordinates of the shapes has been successfully changed. To check the new values, display the image.");
+        imageTab();
+    }
+
+    private void applyTranslationOnImage() {
+        System.out.print("Please enter the value you want to apply to all the geometric shape for the translation : ");
+        int imageTranslationValue = this.userInput.nextInt();
+        imageTransformation.translation(imageTranslationValue);
+        System.out.println("Translation of " + imageTranslationValue + " ............DONE");
+        System.out.println("The coordinates of the shapes has been successfully changed. To check the new values, display the image.");
+        imageTab();
+    }
+
+    //Section used to manage the drawing
+    private void drawingTab() {
+        int choice = 0;
+        System.out.println();
+        System.out.println("Reminder : if you want to remove the content of a drawing, you need to remove the shapes first...");
+        System.out.println("Here is the drawing tab, please select an option : ");
+        System.out.println("1. Display drawing");
+        System.out.println("2. Apply translation");
+        System.out.println("3. Apply dilation");
+        System.out.println("4. Apply rotation");
+        System.out.println("5. Apply symmetryX");
+        System.out.println("6. Apply symmetryY");
+        System.out.println("7. Delete content of the drawing");
+        System.out.println("8. Back to Welcome menu");
+        choice = this.userInput.nextInt();
+
+        switch (choice) {
+            case 1:
+                displayDrawing();
+                break;
+            case 2:
+                applyTranslationOnDrawing();
+                break;
+            case 3:
+                applyDilationOnDrawing();
+                break;
+            case 4:
+                applyRotationOnDrawing();
+                break;
+            case 5:
+                applySymetryXOnDrawing();
+                break;
+            case 6:
+                applySymetryYOnDrawing();
+                break;
+            case 7:
+                deleteContentOfImage();
+                break;
+            case 8:
+                System.out.println("Back to Welcome menu.......");
+                welcome();
+                break;
+            default:
+                imageTab();
+                break;
+        }
+    }
+
+    private void displayDrawing() {
+        int count = 0;
+
+        if(this.shapes.isEmpty()) {
+            System.out.println("The drawing is empty, please add images in it.");
+            System.out.println("Back to Welcome menu....");
+            for(Image image : this.images) {
+                this.images.remove(image);
+            }
+            welcome();
+            return;
+        }
+        int drawingPerimeter = 0;
+        int drawingSurface = 0;
+        System.out.println("Your drawing has " + this.images.stream().count() + " image(s) in it");
+        for (Image image : this.images) {
+            for (GeometricShape geometricShape : image.getShapes()) {
+                if(geometricShape instanceof Polygon) {
+                    for (Line line : ((Polygon) geometricShape).getLines()) {
+                        count++;
+                        System.out.println("Coordinates of line " + count);
+                        System.out.print("Xi" + count + " : " + line.getXi() + "; ");
+                        System.out.print("Yi" + count + " : " + line.getYi() + "; ");
+                        System.out.print("Xj" + count + " : " + line.getXj() + "; ");
+                        System.out.print("Yj" + count + " : " + line.getYj() + "; ");
+                        System.out.println();
+                    }
+                }
+                if(geometricShape instanceof Circle) {
+                    System.out.println("Radius of the circle : " + ((Circle) geometricShape).getRadius());
+                }
+                if(geometricShape instanceof Ellipsis) {
+                    System.out.println("First Radius of the ellipsis : " + ((Ellipsis) geometricShape).getRadius1());
+                    System.out.println("Second Radius of the ellipsis : " + ((Ellipsis) geometricShape).getRadius2());
+                }
+
+                drawingPerimeter += geometricShape.getPerimeter();
+                drawingSurface += geometricShape.getSurface();
+
+            }
+        }
+        System.out.println("The perimeter of your drawing is equal to " + drawingPerimeter + ", and it surface is equal to " + drawingSurface);
+        drawingTab();
+    }
+
+    private void applySymetryXOnDrawing() {
+        this.drawingTransformation.symmetryX();
+        System.out.println("Applying the rotation using the vertical axis of the geometric shapes................DONE");
+        System.out.println("The coordinates of the shapes has been successfully changed. To check the new values, display the drawing.");
+        drawingTab();
+    }
+
+    private void applySymetryYOnDrawing() {
+        this.drawingTransformation.symmetryY();
+        System.out.println("Applying the rotation using the horizontal axis of the geometric shapes................DONE");
+        System.out.println("The coordinates of the shapes has been successfully changed. To check the new values, display the drawing.");
+        drawingTab();
+    }
+
+    private void applyRotationOnDrawing() {
+        this.drawingTransformation.rotation();
+        System.out.println("Applying the rotation to the geometric shapes................DONE");
+        System.out.println("The coordinates of the shapes has been successfully changed. To check the new values, display the drawing.");
+        drawingTab();
+    }
+
+    private void applyDilationOnDrawing() {
+        System.out.print("Please enter the value you want to apply to all the geometric shapes for the dilation : ");
+        int drawingDilationValue = this.userInput.nextInt();
+        while(drawingDilationValue < 0) {
+            System.out.print("Please enter a positive value : ");
+            drawingDilationValue = this.userInput.nextInt();
+        }
+        System.out.println("Dilation of " + drawingDilationValue + " .........DONE");
+        System.out.println("The coordinates of the shapes has been successfully changed. To check the new values, display the drawing.");
+        drawingTab();
+    }
+
+    private void applyTranslationOnDrawing() {
+        System.out.print("Please enter the value you want to apply to all the geometric shape for the translation : ");
+        int drawingTranslationValue = this.userInput.nextInt();
+        imageTransformation.translation(drawingTranslationValue);
+        System.out.println("Translation of " + drawingTranslationValue + " ............DONE");
+        System.out.println("The coordinates of the shapes has been successfully changed. To check the new values, display the drawing.");
+        drawingTab();
+    }
 }

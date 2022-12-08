@@ -5,8 +5,13 @@ import model.shapes.Circle;
 public class CircleTransformation implements Transformation {
     private Circle circle;
 
+    public CircleTransformation(Circle circle) {
+        this.circle = circle;
+    }
+
     @Override
     public void translation(int value) {
+        this.circle.setRadius(this.circle.getRadius() + value);
     }
 
     @Override

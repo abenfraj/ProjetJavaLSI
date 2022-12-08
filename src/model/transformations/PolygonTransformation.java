@@ -7,6 +7,10 @@ public class PolygonTransformation implements Transformation {
 
     private Polygon polygon;
 
+    public PolygonTransformation(Polygon polygon) {
+        this.polygon = polygon;
+    }
+
     @Override
     public void translation(int value) {
         for (Line line : this.polygon.getLines()) {

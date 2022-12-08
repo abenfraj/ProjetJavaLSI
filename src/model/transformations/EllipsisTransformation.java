@@ -5,8 +5,14 @@ import model.shapes.Ellipsis;
 public class EllipsisTransformation implements Transformation {
     private Ellipsis ellipsis;
 
+    public EllipsisTransformation(Ellipsis shape) {
+        this.ellipsis = shape;
+    }
+
     @Override
     public void translation(int value) {
+        this.ellipsis.setRadius1(this.ellipsis.getRadius1() + value);
+        this.ellipsis.setRadius2(this.ellipsis.getRadius2() + value);
     }
 
     @Override
