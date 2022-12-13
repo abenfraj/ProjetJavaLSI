@@ -1,0 +1,16 @@
+Rapport :
+
+- Intro : objectif du sujet, résultat attendu (pourquoi ce projet ? A quoi il sert ?)
+	-> création de formes geometriques
+	-> mettre en pratique les principes vus en cours
+	-> etc..
+
+- Démarche : comment on a abordé le problème ? (parler du fichier architecture.txt, parler des interfaces/Absrtact class qu'on a créee) => mettre des bouts de code pour représenter les classes et l'héritage
+- Tests : mettre des bouts de l'affichage de la console
+- UML => à générer avec les liens
+- UCD => User Case Diagram (schéma fonctionnel = UML + UCD)
+
+DE : 
+
+-> QCM : questions de cours, ou bout de code à lire et intérpréter (Encapsulation, Les Collections)
+-> Lecture de code, déterminer le résultat de certains programmes

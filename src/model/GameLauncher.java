@@ -10,6 +10,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.TreeSet;
 
+
+/**
+ * This class launches the console version of the project
+ */
 public class GameLauncher {
 
     private Scanner userInput = new Scanner(System.in);
@@ -26,6 +30,7 @@ public class GameLauncher {
 
     private ImageTransformation imageTransformation = new ImageTransformation(this.shapes);
     private DrawingTransformation drawingTransformation = new DrawingTransformation(this.images);
+
 
     public void welcome() {
 
@@ -67,7 +72,9 @@ public class GameLauncher {
         }
     }
 
-    //Section used to draw different shapes
+    /**
+     * Section used to draw different shapes
+     */
     private void drawPolygonMenu() {
         int choice = 0;
 
@@ -268,7 +275,9 @@ public class GameLauncher {
         welcome();
     }
 
-    //Section used to manage the images
+    /**
+     * Section used to manage the images
+     */
     private void imageTab() {
         int choice = 0;
 
@@ -410,7 +419,9 @@ public class GameLauncher {
         imageTab();
     }
 
-    //Section used to manage the drawing
+    /**
+     * Section used to manage the drawing
+     */
     private void drawingTab() {
         int choice = 0;
         System.out.println();
