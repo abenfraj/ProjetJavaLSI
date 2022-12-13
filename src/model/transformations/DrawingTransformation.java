@@ -1,6 +1,6 @@
 package model.transformations;
 
-import model.frame.Image;
+import model.frames.Image;
 
 import java.util.TreeSet;
 

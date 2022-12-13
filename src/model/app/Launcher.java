@@ -1,7 +1,7 @@
-package model;
+package model.app;
 
-import model.frame.Drawing;
-import model.frame.Image;
+import model.frames.Drawing;
+import model.frames.Image;
 import model.shapes.*;
 import model.transformations.DrawingTransformation;
 import model.transformations.ImageTransformation;
@@ -14,7 +14,7 @@ import java.util.TreeSet;
 /**
  * This class launches the console version of the project
  */
-public class GameLauncher {
+public class Launcher {
 
     private Scanner userInput = new Scanner(System.in);
 

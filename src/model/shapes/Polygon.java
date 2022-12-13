@@ -1,6 +1,5 @@
 package model.shapes;
 
-import model.exception.PolygonExcetpion;
 import model.shapes.GeometricShape;
 import model.shapes.Line;
 
@@ -47,7 +46,7 @@ public class Polygon extends GeometricShape {
             yi = points[i][1];
             xj = points[i + 1][0];
             yj = points[i + 1][1];
-            surface += (xj * yi) - (xi * yj);
+            surface += (xj * yi) + (xi * yj);
         }
         this.setSurface(surface);
     }

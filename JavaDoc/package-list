@@ -1,6 +1,6 @@
 model
 model.exception
-model.frame
+model.frames
 model.shapes
 model.transformations
 view

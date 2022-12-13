@@ -9,6 +9,7 @@ public class Main {
             public void run() {
                 MainFrame mainFrame = new MainFrame();
                 mainFrame.shapeSelected();
+                mainFrame.setLocationRelativeTo(null);
             }
         });
     }

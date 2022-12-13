@@ -1,4 +1,4 @@
-package model.frame;
+package model.frames;
 
 import java.util.TreeSet;
 

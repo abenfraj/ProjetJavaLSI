@@ -9,7 +9,7 @@ I. Héritage / Polymorphisme
 
         b. Il faut une classe "model.transformations.Transformation" qui serait extends/implémentée par toutes les transformations possibles. Elle aurait en attribut priver une forme géométriques.$
 
-        c. model.frame.Image a besoin de plusieurs formes, un dessin a besoin de plusieurs images.
+        c. model.frames.Image a besoin de plusieurs formes, un dessin a besoin de plusieurs images.
 
         d. On doit trier les formes d'une image par ordre croissant de leur périmètre, et par ordre croissant de leur aire pour les images dans un dessin.
 
@@ -25,7 +25,5 @@ II. Divers
                  une image avec une et uniquement une seule fois un type de forme => IMAGE VALIDE
 
         d. Créez une branche, mergez la sur le main lorsque ce que vous codez est fonctionnel
-
-        e.
 
 
