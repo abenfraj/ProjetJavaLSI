@@ -9,9 +9,7 @@ public abstract class GeometricShape implements Comparable<GeometricShape> {
         this.surface = surface;
     }
 
-    public GeometricShape() {
-
-    }
+    public GeometricShape() {}
 
     public int getPerimeter() {
         return perimeter;
