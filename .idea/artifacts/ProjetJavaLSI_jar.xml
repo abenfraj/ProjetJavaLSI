@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ProjetJavaLSI:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ProjetJavaLSI_jar</output-path>
+    <root id="archive" name="ProjetJavaLSI.jar">
+      <element id="module-output" name="ProjetJavaLSI" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/miglayout-swing.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/miglayout-core.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
